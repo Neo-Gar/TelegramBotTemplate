@@ -9,6 +9,7 @@ from datetime import datetime
 import os
 
 from handlers.client import register_handlers_client
+from data_base.client import client_pool, close_client_pool
 
 init()
 
@@ -47,11 +48,15 @@ async def on_startup(_):
     logger.info('Bot is online!')
     logger.info(f'Startup time: {str(datetime.now())}')
 
+    await client_pool()
+
 
 async def on_shutdown(_):
     print(Fore.RED + 'Shutting down...')
     if LONG_POLLING is False:
         await bot.delete_webhook()
+
+    await close_client_pool()
 
 
 # register handlers
