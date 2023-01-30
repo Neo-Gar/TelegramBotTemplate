@@ -53,10 +53,14 @@ async def on_startup(_):
 
 async def on_shutdown(_):
     print(Fore.RED + 'Shutting down...')
-    if LONG_POLLING is False:
-        await bot.delete_webhook()
+    print(Fore.RED + f'Shutting time: {str(datetime.now())}')
+    logger.info('Shutting down')
+    logger.info(f'Shutting time: {str(datetime.now())}')
 
     await close_client_pool()
+
+    if LONG_POLLING is False:
+        await bot.delete_webhook()
 
 
 # register handlers
