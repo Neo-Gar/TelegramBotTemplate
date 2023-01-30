@@ -1,0 +1,6 @@
+colorama
+python-dotenv
+aiogram
+asyncpg
+#pymysql
+pyyaml

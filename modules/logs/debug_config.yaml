@@ -1,0 +1,19 @@
+version: 1
+
+formatters:
+  default:
+    format: '[%(filename)s] [%(funcName)s] [%(levelname)s]: %(message)s'
+
+handlers:
+  debug_console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: default
+
+loggers:
+  debug:
+    level: DEBUG
+    handlers: [debug_console]
+
+root:
+  handlers: [debug_console]
